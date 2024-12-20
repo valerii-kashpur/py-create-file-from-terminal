@@ -25,7 +25,7 @@ def get_input_lines_values() -> str:
 def get_created_dirs_path(root_path: str, terminal_args: list[str]) -> str:
     file_command_index = terminal_args.index("-f")
     dirs_names = terminal_args[1:file_command_index]
-    os.makedirs("/".join(dirs_names))
+    os.makedirs("/".join(dirs_names), exist_ok=True)
     return os.path.join(root_path, *dirs_names)
 
 
