@@ -3,6 +3,13 @@ import os
 from datetime import datetime
 
 
+def is_valid_cli_command(command: list[str]) -> bool:
+    if "-f" not in command:
+        return False
+
+    return True
+
+
 def get_input_lines_values() -> str:
     is_stopped = False
     line_number = 1
@@ -35,6 +42,9 @@ def generate_file(path: str, file_name: str, content: str) -> None:
 
 
 def create_file_cli(terminal_args: list[str]) -> None:
+    if not is_valid_cli_command(terminal_args):
+        return
+
     path = os.getcwd()
     file_name = terminal_args[-1]
 
